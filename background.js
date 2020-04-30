@@ -3,30 +3,41 @@
  */
 
 var blacklist = [
-  /reddit\.com/,
-  /twitter\.com/,
+  'reddit.com',
+  'twitter.com',
+  'news.ycombinator.com',
+  'theverge.com',
+  'instagram.com',
+  'macrumors.com',
+  'goodreads.com',
+  'rockpapershotgun.com',
+  'youtube.com',
+  'bostonglobe.com',
+  'washingtonpost.com',
+  'nytimes.com',
+  'gizmodo.com',
+  'politico.com',
+  'fivethirtyeight.com',
 ];
 
 function clearHistoryIfBlackholed(domain) {
-  var matched = false;
+  var match = null;
   for (let i in blacklist) {
-    if (blacklist[i].test(domain)) {
-      matched = true;
+    if (domain.indexOf(blacklist[i]) != -1) {
+      match = blacklist[i];
     }
   }
 
-  if (!matched) {
+  if (!match) {
     return;
   }
 
-  var searchingHistory = browser.history.search({text: domain})
+  var searchingHistory = browser.history.search({text: match, startTime: 0, maxResults: 100000})
   searchingHistory.then((results) => {
     for (let k in results) {
-      console.log("removing ", results[k].url);
       browser.history.deleteUrl({url: results[k].url});
     }
-  }
-  );
+  });
 }
 
 browser.runtime.onMessage.addListener((message) => {
