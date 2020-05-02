@@ -11,7 +11,7 @@ function clearHistoryIfBlackholed(domain) {
   getting.then(checkAndClear, onError);
 
   function checkAndClear(settings) {
-    let blacklist = settings.domains.split(/\s*\n\s*/);
+    let blacklist = settings.domains.replace(/^\s*|\s*$/g, '').split(/\s*\n\s*/);
     console.log(blacklist);
 
     var match = null;

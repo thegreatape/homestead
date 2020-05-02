@@ -9,7 +9,8 @@
   "permissions": [
     "activeTab",
     "history",
-    "tabs"
+    "tabs",
+    "storage"
   ],
 
   "content_scripts": [
@@ -26,8 +27,6 @@
   "options_ui": {
     "page": "options.html"
   },
-
-  "permissions": ["storage"],
 
   "browser_specific_settings": {
     "gecko": {
