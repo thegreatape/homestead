@@ -9,7 +9,6 @@ function get_hostname(url) {
 }
 
 function removeHistory() {
-  console.log('removeHistory fired');
   browser.runtime.sendMessage({
     command: "remove",
     domain: get_hostname()
