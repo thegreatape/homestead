@@ -4,7 +4,7 @@
   },
   "description": "",
   "icons": {
-    "48": "icons/history.svg"
+    "48": "icons/home.svg"
   },
   "permissions": [
     "activeTab",
